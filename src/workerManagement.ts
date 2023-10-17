@@ -28,7 +28,7 @@ class Person {
     this._Job = Job;
   }
 
-  getSalary(): number {
+  get salary(): number {
     if (this._Job) {
       return this._Job.salary;
     }
