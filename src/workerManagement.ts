@@ -1,43 +1,43 @@
 class Job {
-  private role: string;
-  private salary: number;
+  private _role: string;
+  private _salary: number;
 
   constructor(role: string, salary: number) {
-    this.role = role;
-    this.salary = salary;
+    this._role = role;
+    this._salary = salary;
   }
 
-  get infoSalary(): number {
-    return this.salary;
+  get salary(): number {
+    return this._salary;
   }
 
   work(personName: string): void {
-    console.log(`${personName} сейчас работает как ${this.role}`);
+    console.log(`${personName} сейчас работает как ${this._role}`);
   }
 }
 
 class Person {
-  private Job?: Job;
-  private name: string;
+  private _Job?: Job;
+  private _name: string;
 
   constructor(name: string) {
-    this.name = name;
+    this._name = name;
   }
 
-  set appointJob(Job: Job) {
-    this.Job = Job;
+  set job(Job: Job) {
+    this._Job = Job;
   }
 
   getSalary(): number {
-    if (this.Job) {
-      return this.Job.infoSalary;
+    if (this._Job) {
+      return this._Job.salary;
     }
     return 0;
   }
 
   work(): void {
-    if (this.Job) {
-      this.Job.work(this.name);
+    if (this._Job) {
+      this._Job.work(this._name);
       return;
     }
     console.log('Нет работы');
@@ -52,17 +52,17 @@ const job1: Job = new Job('Designer', 6000);
 const job2: Job = new Job('Programmer', 7000);
 const job3: Job = new Job('Artist', 5000);
 
-person1.appointJob = job1;
-person2.appointJob = job2;
-person3.appointJob = job3;
+person1.job = job1;
+person2.job = job2;
+person3.job = job3;
 
 person1.work();
 person2.work();
 person3.work();
 
-person1.appointJob = job3;
-person2.appointJob = job1;
-person3.appointJob = job2;
+person1.job = job3;
+person2.job = job1;
+person3.job = job2;
 
 console.log();
 person1.work();
